@@ -8,11 +8,12 @@ with open('tracer.js') as f:
     js = f.read()
 
 js = js.replace("\n", "")
+js = js.replace('"', '\\"')
 
 data = """{
         "jsonrpc":"2.0",
         "method":"debug_traceBlockByNumber",
-        "params":["0x8", { "EnableMemory": true , "tracer": "JS" }],
+        "params":["0x8", { "Timeout": "60m", "EnableMemory": true , "tracer": "JS" }],
         "id":1
 }""".replace("JS", js)
 
